@@ -1,19 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router
+} from "react-router-dom";
 import './App.css';
+import Menu from './menu/menu.js'
+import {fakeAuth, AuthButton} from './PrivateRoute.js'
+import createBrowserHistory from 'history/createBrowserHistory'
+
+const history = createBrowserHistory()
 
 class App extends Component {
+  state = {
+    redirectToReferrer: false
+  };
+
+  login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState({ redirectToReferrer: true });
+    });
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <a>
+              <span className="App-site-name">Johnson</span>
+            </a>
+            <AuthButton />
+            { fakeAuth.isAuthenticated ?
+              <div className="App-login"
+                onClick={() => {
+                  fakeAuth.signout(() => history.push("/"));
+                  this.setState({ redirectToReferrer: false });
+                }}
+              >
+                Sign out
+              </div> :
+              <div className="App-login" onClick={this.login}>Sign in</div>
+              }
+          </header>
+          <Menu></Menu>
+        </div>
+      </Router>
     );
   }
 }
