@@ -1,0 +1,29 @@
+@import '../../assets/css/variable.css';
+$gray: #A8A8A9;
+
+.upload {
+  width: 100px;
+  position: relative;
+}
+
+.upload .btn{
+  border: 1px solid $gray;
+  padding: 7px 15px;
+  text-align: center;
+}
+.upload input[type=file] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 100%;
+}
+.previewer {
+  width: 100%;
+  height: auto;
+}
+
+.previewer img{
+  width: 25%;
+  display: inline-block;
+}

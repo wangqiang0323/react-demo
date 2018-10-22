@@ -1,5 +1,5 @@
 import React from 'react';
-import {fakeAuth} from './../PrivateRoute.js'
+import { fakeAuth } from './../../route/PrivateRoute.js'
 import {
   Redirect
 } from "react-router-dom";
