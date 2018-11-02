@@ -1,0 +1,13 @@
+.card {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 25%;
+  flex-shrink: 1;
+  justify-content: center;
+  height: 300px;
+  margin: 15px;
+}
+
+.flex {
+  display: flex;
+}

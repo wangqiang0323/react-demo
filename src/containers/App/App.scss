@@ -1,0 +1,189 @@
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+// @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+:root {
+  --main-color: #1a8fff;
+  --text-color: #777;
+  --text-color-light: #ccc;
+  --border-color: #eee;
+  --bg-color: #f9f9f9;
+  --neutral-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-color);
+    background: var(--bg-color);
+    position: relative;
+}
+
+header {
+  display: block;
+  width: 100%;
+  padding: 1.75em 0;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--neutral-color);
+}
+
+header #logo {
+  font-size: 175%;
+  text-align: center;
+  color: var(--main-color);
+  line-height: 1;
+}
+
+header #logo .icon {
+  padding-right: .25em;
+}
+
+main {
+  display: block;
+  margin: 0 auto;
+  margin-top: 5em;
+  max-width: 50em;
+}
+
+.App {
+  text-align: left;
+  font-size: 16px;
+}
+
+.App-silder-button {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  position: relative;
+}
+
+h2 {
+  margin: 0;
+}
+
+.App-header {
+  background-color: #fff;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #222;
+  height: 2.3rem;
+  padding: 0.7rem 1.5rem;
+  line-height: 2.2rem;
+  border-bottom: 1px solid #eaecef;
+  .search {
+    position: absolute;
+    right: 15%;
+  }
+}
+
+.App-content {
+  padding-top: 2.3rem;
+}
+
+.App-site-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  position: relative;
+}
+
+.App-menu {
+  position: fixed;
+  width: 200px;
+  left: 0;
+  top: 2.3rem;
+  padding: 0;
+  bottom: 0;
+  border-right: 1px solid #eaecef;
+}
+
+.App-menu ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  padding-left: 1.8rem;
+}
+
+.App-menu ul li {
+  padding: 10px 0;
+}
+
+.App-menu ul li a {
+  text-decoration: none;
+}
+
+.App-body {
+  height: 100%;
+  padding-top: 2.3rem;
+  padding-left: 200px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.App-slider {
+  margin: 0;
+  padding: 0;
+}
+
+.propmt {
+  padding-left: 2rem;
+}
+
+.active {
+  color: red;
+}
+
+.App-login {
+  position: absolute;
+  right: 1.5rem;
+}
+
+.App-slider li {
+  list-style: none;
+}
+
+.page-content {
+  padding: 0.7rem;
+}
+
+.nav {
+  position: fixed;
+  right: 30px;
+}
+
+.nav ul {
+  list-style: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+input {
+  --gray: #D9D9D9;
+  padding: .3rem .7rem;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+}

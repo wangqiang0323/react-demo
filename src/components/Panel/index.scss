@@ -1,0 +1,24 @@
+@import '../variable.scss';
+
+.panel{
+  width: 100%;
+  border: 1px solid darken($color: $bg-color, $amount: 10%);
+  background: darken($color: #eaecef, $amount: 1%);
+  color: #999999;
+  margin-bottom: $spacing;
+  .panel-heading {
+    padding: $spacing;
+    border-bottom: 1px solid darken($color: $bg-color, $amount: 10%);
+  }
+  .panel-footer {
+    padding: $spacing;
+    border-top: 1px solid darken($color: $bg-color, $amount: 10%);
+  }
+  .panel-body {
+    padding: $spacing;
+  }
+}
+
+.hide {
+  display: none;
+}
