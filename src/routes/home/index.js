@@ -11,30 +11,17 @@ import React from 'react';
 import Home from './Home';
 import Layout from '../../components/Layout';
 
-const news = {
-  title: '123',
-  link: '',
-  content: '123'
-}
-
-async function action({ fetch }) {
-  const resp = await fetch('/graphql', {
-    body: JSON.stringify({
-      query: {
-        title: '123',
-        link: '',
-        content: '123',
-      },
-    }),
-  });
-  const { data } = await resp.json();
-  if (!data || !data.news) throw new Error('Failed to load the news feed.');
+function action({ fetch }) {
+  const news = [{
+    id: '1',
+    title: '123'
+  }]
   return {
     title: 'React Starter Kit',
     chunks: ['home'],
     component: (
       <Layout>
-        <Home news={data.news} />
+        <Home news={news} />
       </Layout>
     ),
   };

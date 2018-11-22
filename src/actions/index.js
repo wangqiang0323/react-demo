@@ -3,6 +3,7 @@ import { CALL_API, Schemas } from '../middleware/api'
 export const ADD_ITEM = 'ADD_ITEM'
 export const INIT_ROUTE = 'INIT_ROUTE'
 export const INIT_CAROUSEL = 'INIT_CAROUSEL'
+const UPDATE_LOGIN = 'UPDATE_LOGIN'
 
 let nextTodoId = 0
 export const addItemAction = name => ({
@@ -31,6 +32,15 @@ export const initRoute = () => (dispatch, ownProps) => {
   return dispatch(initRouteAction())
 }
 
+const updateLoginAction = (name) => ({
+  type: UPDATE_LOGIN,
+  name
+})
+
+export const updateLogin = (name) => (dispatch, ownProps) => {
+  return dispatch(updateLoginAction(name))
+}
+
 export const USER_REQUEST = 'USER_REQUEST'
 export const USER_SUCCESS = 'USER_SUCCESS'
 export const USER_FAILURE = 'USER_FAILURE'
@@ -40,7 +50,7 @@ export const USER_FAILURE = 'USER_FAILURE'
 const fetchUser = login => ({
   [CALL_API]: {
     types: [ USER_REQUEST, USER_SUCCESS, USER_FAILURE ],
-    endpoint: `ehr/e015/${login}`,
+    endpoint: `users/${login}`,
     schema: Schemas.USER
   }
 })
@@ -54,6 +64,27 @@ export const loadUser = (login, requiredFields = []) => (dispatch, getState) => 
   }
 
   return dispatch(fetchUser(login))
+}
+
+export const PROFILE_REQUEST = 'PROFILE_REQUEST'
+export const PROFILE_SUCCESS = 'PROFILE_SUCCESS'
+export const PROFILE_FAILURE = 'PROFILE_FAILURE'
+
+const fetchProfile = fullName => ({
+  [CALL_API]: {
+    types: [ PROFILE_REQUEST, PROFILE_SUCCESS, PROFILE_FAILURE ],
+    endpoint: `repos/${fullName}`,
+    schema: Schemas.PROFILE_ARRAY
+  }
+})
+
+export const loadProfile = (login, requiredFields = ['data']) => (dispatch, getState) => {
+  const user = getState().entities.users[login]
+  if (user && requiredFields.every(key => user.hasOwnProperty(key))) {
+    return null
+  }
+
+  return dispatch(fetchProfile(login))
 }
 
 export const REPO_REQUEST = 'REPO_REQUEST'

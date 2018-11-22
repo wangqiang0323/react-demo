@@ -1,5 +1,7 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
+import Drag from '../../components/Drag'
+import Table from '../../components/Table'
 
 class ECMAScript extends React.Component {
   componentWillMount() {
@@ -7,8 +9,8 @@ class ECMAScript extends React.Component {
   }
   componentDidMount() {
     console.log('componentDidMount')
-    console.log(this.ref.innerHTML)
-    console.log(ReactDOM.findDOMNode(this).innerHTML)
+    // console.log(this.ref.innerHTML)
+    // console.log(ReactDOM.findDOMNode(this).innerHTML)
   }
   componentWillUnmount() {
     console.log('componentWillUnmount')
@@ -25,6 +27,8 @@ class ECMAScript extends React.Component {
           123
           <i>BUY NOW</i>
         </Button>
+        <Drag></Drag>
+        <Table></Table>
       </code>
     )
   }

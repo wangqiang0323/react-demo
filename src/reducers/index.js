@@ -3,6 +3,11 @@ import merge from 'lodash/merge'
 import paginate from './paginate'
 import { combineReducers } from 'redux'
 import RouteConfig from '../routeConfig'
+import visibilityFilter from '../components/Todos/reducers/visibilityFilter'
+import todos from '../components/Todos/reducers/todos'
+import tree from '../components/Tree/reducers/tree'
+import table from '../components/Table/reducers/table'
+import columns from '../components/Table/reducers/columns'
 
 
 // Updates an entity cache in response to any action with response.entities.
@@ -62,6 +67,15 @@ const carouselImages = (state = [], action) => {
   }
 }
 
+const login = (state = '', action) => {
+  switch (action.type) {
+    case 'UPDATE_LOGIN':
+      return action.name
+    default:
+      return state
+  }
+}
+
 
 
 // Updates the pagination data for different actions.
@@ -90,7 +104,13 @@ const rootReducer = combineReducers({
   errorMessage,
   routeConfig,
   tabItems,
-  carouselImages
+  carouselImages,
+  login,
+  visibilityFilter,
+  todos,
+  tree,
+  table,
+  columns
 })
 
 export default rootReducer

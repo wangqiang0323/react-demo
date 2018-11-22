@@ -1,8 +1,9 @@
 import React from 'react'
 import App from './components/App'
+import './index.css'
 
 
-class Todos extends React.Component {
+class Drag extends React.Component {
   render() {
     return (
       <App />
@@ -10,5 +11,4 @@ class Todos extends React.Component {
   }
 }
 
-export default Todos
-
+export default Drag

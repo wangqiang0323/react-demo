@@ -16,7 +16,7 @@ const getNextPageUrl = response => {
   return nextLink.trim().split(';')[0].slice(1, -1)
 }
 
-const API_ROOT = '/'
+const API_ROOT = 'https://api.github.com/'
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
@@ -54,7 +54,7 @@ const callApi = (endpoint, schema) => {
 // That's why we're forcing lower cases down there.
 
 const userSchema = new schema.Entity('users', {}, {
-  idAttribute: user => user.data
+  idAttribute: user => user.login.toLowerCase()
 })
 
 const repoSchema = new schema.Entity('repos', {
@@ -63,12 +63,18 @@ const repoSchema = new schema.Entity('repos', {
   idAttribute: repo => repo.fullName.toLowerCase()
 })
 
+const profileSchemas = new schema.Entity('profile', {}, {
+  idAttribute: profile => profile
+})
+
 // Schemas for Github API responses.
 export const Schemas = {
   USER: userSchema,
   USER_ARRAY: [userSchema],
   REPO: repoSchema,
-  REPO_ARRAY: [repoSchema]
+  REPO_ARRAY: [repoSchema],
+  PROFILE: profileSchemas,
+  PROFILE_ARRAY: [profileSchemas]
 }
 
 // Action key that carries API call info interpreted by this Redux middleware.
@@ -92,6 +98,7 @@ export default store => next => action => {
   if (typeof endpoint !== 'string') {
     throw new Error('Specify a string endpoint URL.')
   }
+
   if (!schema) {
     throw new Error('Specify one of the exported Schemas.')
   }

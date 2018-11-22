@@ -38,6 +38,12 @@ const Todos = Loadable({
   loading: Loading
 })
 
+const Tree = Loadable({
+  loader: () =>
+    import('../../components/Tree'),
+  loading: Loading
+})
+
 let input
 
 class Home extends React.Component {
@@ -86,6 +92,9 @@ class Home extends React.Component {
         </Panel>
         <Panel title="Todos" footer="footer">
           <Todos></Todos>
+        </Panel>
+        <Panel title="Tree.Test drag the tree node." footer="footer">
+          <Tree></Tree>
         </Panel>
       </div>
     );

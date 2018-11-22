@@ -1,10 +1,12 @@
 import React from 'react'
+import Tree from '../../components/Tree'
 
 class ReduxTest extends React.Component {
   render () {
     return (
       <div>
-        ReduxTest
+      <p>Test drag the tree node.</p>
+      <Tree />
       </div>
     )
   }

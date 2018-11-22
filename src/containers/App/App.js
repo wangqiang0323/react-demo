@@ -6,7 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { initRoute, loadUser, loadStarred } from '../../actions'
+import { initRoute, loadUser, loadStarred, updateLogin } from '../../actions'
 import PropTypes from 'prop-types'
 
 library.add(faAngleLeft, faAngleRight)
@@ -68,6 +68,7 @@ class NavHeader extends React.Component {
   onKeyUp (e) {
     if (e.keyCode === 13 ) {
       loadData(Object.assign({}, {...this.props}, {login: e.target.value}))
+      this.props.updateLogin(e.target.value)
     }
   }
 
@@ -171,5 +172,6 @@ const mapStateToProps = (state, ownProps) => {
 export default withRouter(connect(mapStateToProps, {
   initRoute,
   loadUser,
-  loadStarred
+  loadStarred,
+  updateLogin
 })(App))
