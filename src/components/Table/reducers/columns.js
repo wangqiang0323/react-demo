@@ -1,5 +1,4 @@
-const searchColumns = (obj) => {
-  let result = []
+const searchColumns = (obj, result) => {
   obj.forEach(column => {
     if ('columns' in column) {
       column.id = Symbol()
@@ -7,18 +6,19 @@ const searchColumns = (obj) => {
         item.parent = column.id
       })
       result.push(column)
-      searchColumns(column.columns)
+      searchColumns(column.columns, result)
     } else {
       result.push(column)
     }
   })
-  return result
 }
 
 const transforTable = (state=[], action) => {
   switch(action.type) {
     case 'TRANSFOR_TABLE':
-      return searchColumns(action.data)
+      let result = []
+      searchColumns(action.data, result)
+      return result
     default:
       return state
   }

@@ -44,6 +44,12 @@ const Tree = Loadable({
   loading: Loading
 })
 
+const Table = Loadable({
+  loader: () =>
+    import('../../components/Table'),
+  loading: Loading
+})
+
 let input
 
 class Home extends React.Component {
@@ -96,6 +102,9 @@ class Home extends React.Component {
         <Panel title="Tree.Test drag the tree node." footer="footer">
           <Tree></Tree>
         </Panel>
+        <Panel title="Table" footer="footer">
+          <Table></Table>
+        </Panel>
       </div>
     );
   }
@@ -104,7 +113,8 @@ class Home extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     items: state.tabItems,
-    carouselImages: state.carouselImages
+    carouselImages: state.carouselImages,
+    table: state.table
   }
 }
 

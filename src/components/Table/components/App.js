@@ -15,7 +15,7 @@ class App extends React.Component {
           {
             Header: "Last Name",
             id: "lastName",
-            accessor: d => d.lastName
+            accessor: 'lastName'
           }
         ]
       },
@@ -34,12 +34,7 @@ class App extends React.Component {
       },
       {
         Header: 'Stats',
-        columns: [
-          {
-            Header: "Visits",
-            accessor: "visits"
-          }
-        ]
+        accessor: "visits"
       }
     ]
     return (
